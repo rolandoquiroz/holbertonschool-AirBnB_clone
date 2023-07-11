@@ -7,18 +7,30 @@ This module define a TestBaseModel Class
 """
 
 import unittest
-import os
-import json
+from time import time
 from models.base_model import BaseModel
-import models
 
 
 class TestBaseModel(unittest.TestCase):
     """
     A TestBaseModel Class
     """
+    def setUp(self):
+        self.mdl = BaseModel()
+        self.start = time()
+
+    def tearDown(self):
+        self.end = time()
 
     def test_string_representation(self):
-        my_model = BaseModel()
-        self.assertEqual(str(my_model),
-                         f'[BaseModel] ({my_model.id}) {my_model.__dict__}')
+        self.assertEqual(str(self.mdl),
+                         f'[BaseModel] ({self.mdl.id}) {self.mdl.__dict__}')
+
+    def test_save(self):
+        first_time = self.mdl.updated_at
+        self.mdl.save()
+        second_time = self.mdl.updated_at
+        self.assertNotEqual(first_time, second_time)
+
+    def test_attributes(self):
+        self.assertTrue(hasattr(self.mdl, 'id'))
