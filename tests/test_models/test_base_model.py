@@ -25,6 +25,9 @@ class TestBaseModel(unittest.TestCase):
     def test_id(self):
         self.assertTrue(self.mdl.id)
 
+    def test_created_at(self):
+        self.assertTrue(self.mdl.created_at)
+
     def test_str(self):
         self.assertEqual(str(self.mdl),
                          f'[BaseModel] ({self.mdl.id}) {self.mdl.__dict__}')
@@ -36,4 +39,4 @@ class TestBaseModel(unittest.TestCase):
         self.assertNotEqual(first_time, second_time)
 
     def test_to_dict(self):
-        self.assertTrue(self.mdl.to_dict())
+        self.assertIn('__class__', self.mdl.to_dict())
