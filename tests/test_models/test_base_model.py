@@ -22,7 +22,10 @@ class TestBaseModel(unittest.TestCase):
     def tearDown(self):
         self.end = time()
 
-    def test_string_representation(self):
+    def test_id(self):
+        self.assertTrue(self.mdl.id)
+
+    def test_str(self):
         self.assertEqual(str(self.mdl),
                          f'[BaseModel] ({self.mdl.id}) {self.mdl.__dict__}')
 
@@ -32,5 +35,5 @@ class TestBaseModel(unittest.TestCase):
         second_time = self.mdl.updated_at
         self.assertNotEqual(first_time, second_time)
 
-    def test_id(self):
-        self.assertTrue(self.mdl.id)
+    def test_to_dict(self):
+        self.assertTrue(self.mdl.to_dict())
