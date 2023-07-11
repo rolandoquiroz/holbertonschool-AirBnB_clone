@@ -8,6 +8,7 @@ This module define a TestBaseModel Class
 
 import unittest
 from time import time
+from datetime import datetime
 from models.base_model import BaseModel
 
 
@@ -26,7 +27,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(self.mdl.id)
 
     def test_created_at(self):
-        self.assertTrue(self.mdl.created_at)
+        self.assertIs(type(self.mdl.created_at), datetime.datetime)
 
     def test_str(self):
         self.assertEqual(str(self.mdl),
