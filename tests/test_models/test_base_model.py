@@ -32,5 +32,5 @@ class TestBaseModel(unittest.TestCase):
         second_time = self.mdl.updated_at
         self.assertNotEqual(first_time, second_time)
 
-    def test_attributes(self):
-        self.assertTrue(hasattr(self.mdl, 'id'))
+    def test_id(self):
+        self.assertTrue(self.mdl.id)
