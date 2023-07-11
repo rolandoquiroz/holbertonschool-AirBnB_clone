@@ -27,7 +27,7 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(self.mdl.id)
 
     def test_created_at(self):
-        self.assertIs(type(self.mdl.created_at), datetime.datetime)
+        self.assertIs(type(self.mdl.created_at), datetime)
 
     def test_str(self):
         self.assertEqual(str(self.mdl),
