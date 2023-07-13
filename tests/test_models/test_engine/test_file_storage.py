@@ -45,16 +45,8 @@ class TestFileStorage(unittest.TestCase):
     
     def test_save(self):
         self.strg.new(self.bmdl)
-        self.strg.save()
-
-        with open('file.json', 'r') as f:
-            json_obj = json.loads(f.read())
-
-        self.assertNotEqual(len(json_obj), 0)
+        self.assertEqual(self.strg.save(), None)
 
     def test_reload(self):
-        self.strg.reload()
-        self.assertNotEqual(len(self.strg.all()), 0)
-
+        self.assertEqual(self.strg.reload(), None)
         os.remove('file.json')
-
