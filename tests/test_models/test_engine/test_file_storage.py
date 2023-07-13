@@ -60,3 +60,4 @@ class TestFileStorage(unittest.TestCase):
         self.strg.__objects = {}
         self.strg.reload()
         self.assertNotEqual(len(self.strg.all()), 0)
+        os.remove('file.json')
