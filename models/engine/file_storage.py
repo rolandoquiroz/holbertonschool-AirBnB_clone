@@ -19,7 +19,7 @@ class FileStorage:
     def all(self):
         return self.__objects
 
-    def new(self, obj):
+    def new(self, obj: BaseModel):
         self.__objects[f'{obj.__class__.__name__}.{obj.id}'] = obj
 
     def save(self):
@@ -32,6 +32,6 @@ class FileStorage:
         if os.path.exists(self.__file_path):
             with open(self.__file_path, 'r') as f:
                 json_object = json.loads(f.read())
-                objects = {key: BaseModel(value)
+                objects = {key: BaseModel(**value)
                            for key, value in json_object.items()}
                 self.__objects = objects
